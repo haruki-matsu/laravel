@@ -15,7 +15,7 @@ use App\Models\Service;
 class ServiceController extends Controller
 {
 
-// 一覧の表示
+// ホームページの表示
     public function index()
     {
         $services = Service::all();
@@ -23,11 +23,9 @@ class ServiceController extends Controller
     }
 
 
-
-//登録ページの表示
-
-public function store(Request $request)
-{
+//DBにデータを保存
+    public function store(Request $request)
+    {
         // バリデーションルールを定義
         $rules = [
             'line_up' => 'required|max:255',
@@ -101,48 +99,40 @@ public function store(Request $request)
     }
     
 
+//DBからデータを取得
+    public function getAfile()
+    {
+        $services = Service::all(); 
+        return view('admin.manage', compact('services'));
+    }
 
 
-//ファイルを取得
-
-public function getAfile()
-{
-    $services = Service::all(); // Serviceモデルを使用して全サービスデータを取得
-    return view('admin.manage', compact('services')); // ビューにデータを渡す
-}
-
+//DBから特定にID取得
+    public function edit($id)
+    {
+        $service = Service::findOrFail($id); 
+        return view('admin.edit', compact('service')); 
+    }
 
 
-
-
-
-public function edit($id)
-{
-    $service = Service::findOrFail($id); // IDに基づいてサービス情報を取得、存在しない場合は404
-    return view('admin.edit', compact('service')); // 編集ビューにデータを渡す
-}
-
-
-
-public function update(Request $request, $id)
-{
-    // 以前のコード...
-
-    $service = Service::findOrFail($id);
+//DBの特定のIDのデータを変更
+    public function update(Request $request, $id)
+    {
+        $service = Service::findOrFail($id);
 
     // 更新前の画像のパスを保持
-    $oldImagePath = $service->img_path;
+        $oldImagePath = $service->img_path;
 
     // データの更新
-    $service->line_up = $request->line_up;
-    $service->service_name = $request->service_contents;
-    $service->price = $request->price;
+        $service->line_up = $request->line_up;
+        $service->service_name = $request->service_contents;
+        $service->price = $request->price;
 
     // ファイルの処理
-    if ($request->hasFile('up_img')) {
-        $file = $request->file('up_img');
-        $filename = time() . '_' . $file->getClientOriginalName();
-        $filePath = 'uploads/' . $filename;
+        if ($request->hasFile('up_img')) {
+            $file = $request->file('up_img');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $filePath = 'uploads/' . $filename;
 
         // Storageファサードを使ってファイルの存在をチェック
         if (\Storage::exists('public/' . $filePath)) {
@@ -157,38 +147,34 @@ public function update(Request $request, $id)
         if ($oldImagePath && Storage::exists('public/' . $oldImagePath)) {
             Storage::delete('public/' . $oldImagePath);
         }
-    }
-
-    try {
-        $service->save();
-        return redirect()->route('edit.done')->with('success', $request->line_up . ' のサービス情報が更新されました。');
-    } catch (\Exception $e) {
-        // DBのエラー等
-        return redirect()->route('edit.done')->with('error', 'サービスの更新中にエラーが発生しました。');
-    }
-}
-
-
-
-
-
-//サービス内容の削除
-public function destroy($id)
-{
-    try {
-        $service = Service::findOrFail($id);
-        $service->delete();
-
-        //ディレクトリ内のファイル削除
-        if ($service->img_path && Storage::exists('public/' . $service->img_path)) {
-            Storage::delete('public/' . $service->img_path);
         }
 
-        return redirect()->route('delete.done')->with('success', '正常に削除されました。');
-    } catch (\Exception $e) {
-        return redirect()->route('delete.done')->with('error', 'サービスの削除中にエラーが発生しました。');
+        try {
+            $service->save();
+            return redirect()->route('edit.done')->with('success', $request->line_up . ' のサービス情報が更新されました。');
+        } catch (\Exception $e) {
+            // DBのエラー等
+            return redirect()->route('edit.done')->with('error', 'サービスの更新中にエラーが発生しました。');
+        }
     }
-}
 
 
+
+//DBの特定のIDのデータを削除
+    public function destroy($id)
+    {
+        try {
+            $service = Service::findOrFail($id);
+            $service->delete();
+
+        //ディレクトリ内のファイル削除
+            if ($service->img_path && Storage::exists('public/' . $service->img_path)) {
+                Storage::delete('public/' . $service->img_path);
+            }
+
+            return redirect()->route('delete.done')->with('success', '正常に削除されました。');
+        } catch (\Exception $e) {
+            return redirect()->route('delete.done')->with('error', 'サービスの削除中にエラーが発生しました。');
+        }
+    }
 }

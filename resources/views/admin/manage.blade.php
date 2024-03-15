@@ -76,13 +76,7 @@
     </table>
 </section>
 
-
-
-
-
-
-    
-    <!-- フッター -->
+<!-- フッター -->
 @include('components.footer')
 
 <script src="{{ asset('js/main.js') }}"></script>

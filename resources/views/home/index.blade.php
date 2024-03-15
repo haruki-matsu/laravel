@@ -12,7 +12,7 @@
     <!-- ヘッダー -->
     @include('components.header_index')
 
-    <!-- エラーメッセージ -->
+    <!-- エラーメッセージ(入力フォームでエラーになった場合に表示) -->
     @if ($errors->any())
     <h2 class="h2_error">入力内容に誤りがあります</h2>
         <ul>

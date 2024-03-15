@@ -13,18 +13,15 @@
 <!-- ヘッダー -->
 @include('components.header')
 
+
+<!-- バリデーションのメッセージ -->
 @if(session('success'))
         <p>{{ session('success') }}</p>
     @endif
 
-
 @if(session('error'))
         <p>{{ session('error') }}</p>
 @endif
-
-
-
-
 
 <a href="/manage" class=f_button>管理画面に戻る</a> 
     <!-- フッター -->

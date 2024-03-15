@@ -14,11 +14,11 @@
 @include('components.header')
 
 
-    <!-- 登録画面のセクション -->
+<!-- 登録画面のセクション -->
     <h2 class=f_h2>登録画面</h2>
     <div class=f_text>
 
-<!-- バリデーション -->
+<!-- バリデーションのメッセージ -->
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -44,7 +44,7 @@
     </div>
     <a href="/manage" class=f_button>管理画面に戻る</a> 
 
-    <!-- フッター -->
+<!-- フッター -->
 @include('components.footer')
 
 </body>

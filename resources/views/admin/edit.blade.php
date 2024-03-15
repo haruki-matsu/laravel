@@ -13,9 +13,6 @@
 <!-- ヘッダー -->
 @include('components.header')
 
-
-
-
 <!-- サービスの登録セクション -->
 <section id="service">
     <h2 class="manage_h2">編集画面</h2>
@@ -48,7 +45,7 @@
     </form>
 </section>
     
-    <!-- フッター -->
+<!-- フッター -->
 @include('components.footer')
 
 <script src="{{ asset('js/main.js') }}"></script>
