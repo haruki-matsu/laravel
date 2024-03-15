@@ -7,7 +7,7 @@
 
 ### Mailtrapの設定方法
 
-1. Mailtrapのウェブサイト（https://mailtrap.io）にアクセスし、アカウントを作成（またはログイン）します。
+1. [Mailtrapのウェブサイト](https://mailtrap.io) にアクセスし、アカウントを作成（またはログイン）します。
 2. 「Inboxes」セクションから、テスト用のインボックスを選択し、「SMTP Settings」タブを開きます。
 3. 表示されたSMTP設定の「Username」と「Password」をコピーします。
 4. プロジェクトの`.env`ファイルを開き、以下の設定を更新します。コピーした「Username」と「Password」をそれぞれ`MAIL_USERNAME`と`MAIL_PASSWORD`の値に設定してください。
