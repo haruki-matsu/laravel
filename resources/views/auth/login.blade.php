@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <script src="{{ asset('js/login.js') }}"></script>
 
 </head>
 <body>
 @if ($errors->any())
-    <div class="alert alert-danger">
+    <div>
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -18,19 +20,26 @@
     </div>
 @endif
 
-<main class="form-signin w-100 m-auto">
+
+<main>
   <form method="post" action="{{route('login')}}">
     @csrf
-    <h1 class="h3 mb-3 fw-normal">ログイン</h1>
+    <h1>ログイン</h1>
 
     <div class="form-floating">
-      <input type="email" name=email class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="email" name=email class="form-control"  placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" name=password class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" name=password class="form-control"  placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+    <button type="submit">Sign in</button>
   </form>
 </main>
+
+<!-- フッター -->
+@include('components.footer')
+
+</body>
+</html>
