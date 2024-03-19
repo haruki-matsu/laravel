@@ -6,26 +6,26 @@
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <title>Document</title>
+    <title>削除完了画面</title>
 </head>
 <body>
 
-<!-- ヘッダー -->
-@include('components.header')
+    <!-- ヘッダー -->
+    @include('components.header')
 
-
-<!-- バリデーションのメッセージ -->
-@if(session('success'))
+    <!-- バリデーションのメッセージ -->
+    @if(session('success'))
         <p>{{ session('success') }}</p>
     @endif
 
-@if(session('error'))
+    @if(session('error'))
         <p>{{ session('error') }}</p>
-@endif
+    @endif
 
-<a href="/manage" class=f_button>管理画面に戻る</a> 
+    <a href="/manage" class=f_button>管理画面に戻る</a> 
+
     <!-- フッター -->
-@include('components.footer')
+    @include('components.footer')
 
 </body>
 </html>

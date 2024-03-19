@@ -1,41 +1,23 @@
 <?php
 
-namespace Database\Factories;
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Login;
+use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
-class LoginFactory extends Factory
-{
-    /**
-     * The current password being used by the factory.
-     */
-    protected static ?string $password;
+$factory->define(Login::class, function (Faker $faker) {
+    $password = 'password1'; // テスト用パスワードを変数に格納
+    // バリデーションルールに適合するようにユーザー名を生成
+    $user_name = $faker->lexify('????????').$faker->numerify('##');
+    return [
+        'user_name' => $user_name,
+        'password' => Hash::make($password), // パスワードをハッシュ化して保存
+    ];
+});
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
-    {
-        return [
-            'email' => fake()->unique()->safeEmail(),
-            'password' => static::$password ??= Hash::make('Password1'),
-        ];
-    }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
-}
+
+
+
+    

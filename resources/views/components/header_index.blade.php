@@ -1,11 +1,12 @@
+<!-- indexページ専用のヘッダー -->
+
 <header> 
-        <img src="{{ asset('images/icon.png') }}" alt="スクトップPCのアイコン">
+    <img src="{{ asset('images/icon.png') }}" alt="スクトップPCのアイコン">
+    <div>
+        <a href="#service" class="scroll-link">サービス一覧</a>
+        <a href="#form" class="scroll-link">お問合せ</a>
+    </div>
+    <a href="{{ route('showLogin') }}" class="roguin">ログイン画面</a>
+</header>
 
-        <div>
-            <a href=index.php#service>サービス一覧</a>
-            <a href=index.php#form>お問合せ</a>
-        </div>
-        <a href="{{ route('showLogin') }}" id="roguin">ログイン画面</a>
-
-    </header>
 

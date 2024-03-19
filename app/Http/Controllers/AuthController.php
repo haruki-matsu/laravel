@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator; 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage; 
 use App\Models\Service; 
 use Illuminate\Support\Facades\Auth;
@@ -23,44 +24,46 @@ class AuthController extends Controller
     //ログイン機能
     public function login(Request $request)
     {
-        // バリデーションルールの適用
         $rules = [
-            'email' => 'required|email|max:255', // 'email'のバリデーションルール追加
-            'password' => ['required', 'min:8', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/'],
+            'user_name' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/',
+            'password' => 'required|regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/',
         ];
     
         $messages = [
-            'email.required' => 'メールアドレスを入力してください。',
-            'email.email' => '正しいメールアドレス形式で入力してください。',
-            'password.required' => 'パスワードを入力してください。',
-            'password.min' => 'パスワードは最低8文字必要です。',
-            'password.regex' => '',
+            'user_name.required' => 'ユーザー名は必須です。',
+            'user_name.regex' => 'ユーザー名は半角英数字で入力してください。',
+            'password.required' => 'パスワードは必須です。',
+            'password.regex' => 'パスワードは半角英数字で入力してください。', 
         ];
     
         // バリデーションの実行
-        $credentials = $request->validate($rules, $messages);
-        
+        $validatedData = $request->validate($rules, $messages);
+
+        Log::info('Credentials:', $validatedData);
+    
+        // ログイン試行時に 'email' の代わりに 'username' を使用
+        $credentials = [
+            'user_name' => $request->user_name,
+            'password' => $request->password,
+        ];
+    
         // エラーなし
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended(route('manage'));
         }
-    
+
         // エラーあり
         return back()->withErrors([
-            'email' => 'メールアドレスまたはパスワードが正しくありません。',
+            'user_name' => 'ユーザー名またはパスワードが正しくありません。',
         ]);
     }
-
+    
     public function logout(Request $request)
-{
-    Auth::logout(); // ログアウト処理
-    $request->session()->invalidate(); // セッションの無効化
-    $request->session()->regenerateToken(); // セッションのトークン再生成
-    return redirect('/'); // ログアウト後にリダイレクトする先を指定
+    {
+        Auth::logout(); // ログアウト処理
+        $request->session()->invalidate(); // セッションの無効化
+        $request->session()->regenerateToken(); // セッションのトークン再生成
+        return redirect('/'); 
+    }
 }
-
-
-
-}
-

@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ asset('js/scroll.js') }}"></script>
+    <title>ホーム画面</title>
 </head>
 <body>
     <!-- ヘッダー -->
@@ -24,7 +26,6 @@
 
     <!-- ヘッダー下背景(windowsとmacのロゴ)-->
     <img src="{{ asset('images/image 1.png') }}" alt="ヘッダー下の背景画像(windowsとmacのロゴ)" id=img_wiondosMac>
-
 
     <!-- サービス一覧表示セクション -->
     <section id=service>
@@ -50,7 +51,9 @@
                             <td><p>{{ $service->service_name }}</p></td>
                             <td><p>¥{{ number_format($service->price) }}</p></td>
                             <td><img src="{{ asset('storage/' . $service->img_path) }}" alt="" style="width: 100px;"></td>
+
                         </tr>
+                    
                     @endforeach
 
                 </table>

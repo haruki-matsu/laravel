@@ -7,6 +7,7 @@ use DateTimeInterface;
 use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Str;
 
 class DynamoDbFailedJobProvider implements FailedJobProviderInterface
 {
@@ -57,7 +58,7 @@ class DynamoDbFailedJobProvider implements FailedJobProviderInterface
      */
     public function log($connection, $queue, $payload, $exception)
     {
-        $id = json_decode($payload, true)['uuid'];
+        $id = (string) Str::orderedUuid();
 
         $failedAt = Date::now();
 
@@ -79,20 +80,6 @@ class DynamoDbFailedJobProvider implements FailedJobProviderInterface
     }
 
     /**
-     * Get the IDs of all of the failed jobs.
-     *
-     * @param  string|null  $queue
-     * @return array
-     */
-    public function ids($queue = null)
-    {
-        return collect($this->all())
-            ->when(! is_null($queue), fn ($collect) => $collect->where('queue', $queue))
-            ->pluck('id')
-            ->all();
-    }
-
-    /**
      * Get a list of all of the failed jobs.
      *
      * @return array
@@ -109,9 +96,7 @@ class DynamoDbFailedJobProvider implements FailedJobProviderInterface
             'ScanIndexForward' => false,
         ]);
 
-        return collect($results['Items'])->sortByDesc(function ($result) {
-            return (int) $result['failed_at']['N'];
-        })->map(function ($result) {
+        return collect($results['Items'])->map(function ($result) {
             return (object) [
                 'id' => $result['uuid']['S'],
                 'connection' => $result['connection']['S'],
@@ -179,12 +164,11 @@ class DynamoDbFailedJobProvider implements FailedJobProviderInterface
     /**
      * Flush all of the failed jobs from storage.
      *
-     * @param  int|null  $hours
      * @return void
      *
      * @throws \Exception
      */
-    public function flush($hours = null)
+    public function flush()
     {
         throw new Exception("DynamoDb failed job storage may not be flushed. Please use DynamoDb's TTL features on your expires_at attribute.");
     }

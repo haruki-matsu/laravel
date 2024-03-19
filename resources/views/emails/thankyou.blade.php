@@ -1,3 +1,5 @@
+<!-- 企業側に届くメール内容 -->
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>

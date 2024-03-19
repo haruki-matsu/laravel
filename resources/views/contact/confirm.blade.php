@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <title>確認画面</title>
+    <title>入力フォーム確認画面</title>
 </head>
 <body>
     <!-- ヘッダー -->
