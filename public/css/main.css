@@ -27,13 +27,18 @@ header div a{
     text-decoration: none;        
 }
 
-#roguin{
+.roguin{
     position: absolute;
     right: 3%;
     bottom: 20px;
     background-color: rgb(234, 224, 224);
     font-size: 30px;
     padding: 20px;
+    cursor: pointer;
+}
+
+.roguin:hover {
+    background-color: #c6cacf;
 }
 
 

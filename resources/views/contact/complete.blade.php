@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <title>送信完了ページ</title>
+    <title>送信完了画面</title>
 </head>
 <body>
     <!-- ヘッダー -->
@@ -35,6 +35,7 @@
 
 
     <a href="/" class=f_button>ホーム画面に戻る</a> 
+    
     <!-- フッター -->
     @include('components.footer')
 

@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Login extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,8 +18,8 @@ class Login extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'email',
-        'password',
+        'user_name',
+        'pass_word',
         'locked_flg',
         'error_count'
     ];

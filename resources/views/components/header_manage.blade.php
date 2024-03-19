@@ -1,6 +1,13 @@
-<header> 
-        <img src="{{ asset('images/icon.png') }}" alt="スクトップPCのアイコン">
-        <a href="/" id="roguin">ログアウト</a>
+<!-- 管理ページ専用のヘッダー -->
 
-    </header>
+<header>
+    <a href="/">
+        <img src="{{ asset('images/icon.png') }}" alt="スクトップPCのアイコン" style="cursor: pointer;">
+    </a>
+    <form action="{{ route('logout') }}" method="POST" >
+        @csrf
+        <button type="submit" class="roguin" >ログアウト</button>
+    </form>
+</header>
+
 

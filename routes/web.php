@@ -14,10 +14,10 @@ Route::get('/', [ServiceController::class, 'index'])->name('index');
 
 //メール送信関連
 
-//入力フォーム確認画面に移動
+//入力フォームの確認画面に移動
 Route::post('/confirm', [ContactController::class, 'confirm'])->name('confirm'); 
-//メール送信機能
-Route::post('/send', [ContactController::class, 'sendMail'])->name('send'); //メール送信
+//メールの送信
+Route::post('/send', [ContactController::class, 'sendMail'])->name('send'); 
 //メール送信完了画面に移動
 Route::get('/complete', function () {
     return view('contact.complete');
@@ -25,21 +25,28 @@ Route::get('/complete', function () {
 
 
 
-//ログインページ関連
+//ログイン関連
 
 //ログインページに移動
-Route::get('/show_login', [AuthController::class, 'showLogin'])->name('showLogin');
-//ログイン機能
+Route::get('/login', function () {
+    if (Auth::check()) {
+        return redirect()->route('manage'); //ログインしている場合
+    }
+    return view('auth.login'); //ログインしていない場合
+})->name('showLogin');
+//ログイン
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-//管理画面に移動
-Route::get('/manage', function () {
-    return view('admin.manage');
-})->name('manage');
+//ログアウト
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
-//サービス管理関連
 
+//管理画面関連
+
+//タイムアウト時にログイン画に移動
+Route::middleware(['auth', 'session.timeout'])->group(function () {
+ 
 //サービス登録
 Route::post('/store', [ServiceController::class, 'store'])->name('form.store');
 //サービス登録完了画面に移動
@@ -54,25 +61,19 @@ Route::get('/delete-done', function () {
     return view('admin.delete_done');
 })->name('delete.done');
 
-
-//編集画面に移動(データも移動)
+//編集画面に移動
 Route::get('/edit_item/{id}', [ServiceController::class, 'edit'])->name('edit');
 //サービスの更新
 Route::post('update/{id}', [ServiceController::class, 'update'])->name('update');
-//サ０ビス更新完了画面に移動
+//サ-ビス更新完了画面に移動
 Route::get('/edit-done', function () {
     return view('admin.edit_done');
 })->name('edit.done');
 
-
-
-
-
-
+//管理画面に移動
 Route::get('/manage', [ServiceController::class, 'getAfile'])->name('manage');
 
-
-
+});
 
 
 

@@ -1,3 +1,5 @@
+<!-- お客様に送るメール内容 -->
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -14,3 +16,4 @@
     <p><strong>メッセージ：</strong><br>{{ nl2br(e($data['message'] ?? '未入力')) }}</p>
     <hr>
 </body>
+
