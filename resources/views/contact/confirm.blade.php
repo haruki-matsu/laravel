@@ -2,8 +2,9 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <title>入力フォーム確認画面</title>
 </head>
@@ -12,7 +13,7 @@
     @include('components.header')
 
     <!--送信内容の確認のセクション -->
-    <h2 class=mail_h2>送信内容の確認</h2>
+    <h2 class="mail_h2">送信内容の確認</h2>
         <form action="send" method="post">
             @csrf
             <div class=mail_p>

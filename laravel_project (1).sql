@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2024-03-19 11:05:25
+-- 生成日時: 2024-03-21 06:40:18
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 7.4.29
 
@@ -114,7 +114,7 @@ CREATE TABLE `service` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `line_up` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `service_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` decimal(8,2) DEFAULT NULL,
+  `price` decimal(10,0) DEFAULT NULL,
   `img_path` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -125,8 +125,8 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `line_up`, `service_name`, `price`, `img_path`, `created_at`, `updated_at`) VALUES
-(46, 'サービス', 'サービスです', '12000.00', 'uploads/1710836895_65f94c9fdd165.png', '2024-03-19 08:28:15', '2024-03-19 08:28:15'),
-(47, 'サービス2', 'サービス2です', '130000.00', 'uploads/1710836939_65f94ccb14c9b.png', '2024-03-19 08:28:59', '2024-03-19 08:28:59');
+(46, 'サービス', 'サービスです', '12000', 'uploads/1710836895_65f94c9fdd165.png', '2024-03-19 08:28:15', '2024-03-19 08:28:15'),
+(55, '１１１', '１１１', '11', 'uploads/1710999105_image 2.png', '2024-03-20 15:15:35', '2024-03-21 05:31:45');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -199,7 +199,7 @@ ALTER TABLE `personal_access_tokens`
 -- テーブルの AUTO_INCREMENT `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

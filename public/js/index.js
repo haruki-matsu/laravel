@@ -1,5 +1,7 @@
+//スクロール
+
 $(document).ready(function(){
-    $('.scroll-link').click(function(e) {
+    $('.scroll_link').click(function(e) {
         e.preventDefault();
   
         var targetId = $(this).attr('href');
@@ -10,3 +12,14 @@ $(document).ready(function(){
         }, 1000); // ms
     });
 });
+
+
+//ハンバーガーメニュー
+
+$(document).ready(function(){
+    $(".hamburger-menu").click(function(){
+      $("#navMenu").toggle();
+    });
+});
+
+  

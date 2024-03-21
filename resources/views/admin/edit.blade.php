@@ -31,15 +31,15 @@
                         <th width="10%"></th>
                     </tr>
                     <tr>
-                        <td><input class="input_gray" type="text" name="line_up"value="{{ $service->line_up }}"></td>
-                        <td><textarea class="input_gray2" name="service_contents">{{ $service->service_name }}</textarea></td>
+                        <td><input class="grayBack_thin" type="text" name="line_up"value="{{ $service->line_up }}"></td>
+                        <td><textarea class="grayBack_thick" name="service_contents">{{ $service->service_name }}</textarea></td>
                         <td>
-                            <input class="input_gray" type="number" name="price" value="{{ $service->price }}"></td>
+                            <input class="grayBack_thin" type="number" name="price" value="{{ $service->price }}"></td>
                         <td>
-                            <img src="{{ asset('storage/' . $service->img_path) }}" alt="サービス画像" id="savedImage" style="max-width: 100px; max-height: 100px;">
-                            <img id="preview" src="" alt="プレビュー" style="width: 100px; display: none;">
+                            <img src="{{ asset('storage/' . $service->img_path) }}" alt="サービス画像" id="exist_img" style="max-width: 100px; max-height: 100px;">
+                            <img id="update_img" src="" alt="プレビュー" style="width: 100px; display: none;">
                         </td>
-                        <td><button type="submit" class="input_gray3">更新</button></td>
+                        <td><button type="submit"  class="grayBack_botton">更新</button></td>
                     </tr>
                 </table>
             </form>

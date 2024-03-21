@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}" >
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <title>ログイン画面</title>
 </head>
 <body>
@@ -13,37 +15,33 @@
 
   <!-- 入力フォームのエラーを表示 -->
   @if ($errors->any())
-    <div>
+    <p class="form_error">入力エラー<p>
       <ul>
         @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
+          <li>・{{ $error }}</li>
         @endforeach
       </ul>
-    </div>
   @endif
 
-  <!-- タイムアウト時のメッセージを表示 -->
-  @if (session('warning'))
-    <div class="alert alert-warning">
-        {{ session('warning') }}
-    </div>
-  @endif
+ 
+  <form method="post" action="{{route('login')}}" >
+  @csrf
+    <h2 class=login_h2>ログイン画面</h2>
+      <div class="login_container">
+        <table>
+          <tr>
+            <th>UserName</th>
+              <td><input type="text" name="user_name"></td>
+            </tr>
+            <tr>
+              <th>PassWord</th>
+              <td><input type="password" name="password"></td>
+            </tr>
+          </table>
+        <button type="submit">ログイン</button>
+      </div>
 
-  <main>
-    <form method="post" action="{{route('login')}}">
-      @csrf
-      <h1>ログイン</h1>
-        <div class="form-floating">
-          <label>Usename</label>
-          <input type="text" name=user_name class="form-control" >
-        </div>
-        <div class="form-floating">
-          <label for="floatingPassword">Password</label>
-          <input type="password" name=password class="form-control">
-        </div>
-        <button type="submit">Sign in</button>
-    </form>
-  </main>
+
 
   <!-- フッター -->
   @include('components.footer')

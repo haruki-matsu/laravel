@@ -15,8 +15,8 @@
 
 
     <!-- 登録画面のセクション -->
-    <h2 class=f_h2>登録画面</h2>
-    <div class=f_text>
+    <h2 class=h2>登録画面</h2>
+    <div class=service_text>
 
         <!-- バリデーションのメッセージ -->
         @if(session('success'))
@@ -42,7 +42,7 @@
         @endif
     </div>
     
-    <a href="/manage" class=f_button>管理画面に戻る</a> 
+    <a href="/manage" class=service_button>管理画面に戻る</a> 
 
     <!-- フッター -->
     @include('components.footer')

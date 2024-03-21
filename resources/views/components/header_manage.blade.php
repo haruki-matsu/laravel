@@ -6,7 +6,7 @@
     </a>
     <form action="{{ route('logout') }}" method="POST" >
         @csrf
-        <button type="submit" class="roguin" >ログアウト</button>
+        <button type="submit" class="login_botton" id="button_right">ログアウト</button>
     </form>
 </header>
 

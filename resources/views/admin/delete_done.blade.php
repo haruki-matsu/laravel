@@ -9,20 +9,24 @@
     <title>削除完了画面</title>
 </head>
 <body>
-
     <!-- ヘッダー -->
     @include('components.header')
 
-    <!-- バリデーションのメッセージ -->
-    @if(session('success'))
-        <p>{{ session('success') }}</p>
-    @endif
+    <h2 class=h2>削除画面</h2>
+        <div class=service_text>
 
-    @if(session('error'))
-        <p>{{ session('error') }}</p>
-    @endif
 
-    <a href="/manage" class=f_button>管理画面に戻る</a> 
+            <!-- バリデーションのメッセージ -->
+            @if(session('success'))
+                <p>{{ session('success') }}</p>
+            @endif
+
+            @if(session('error'))
+                <p>{{ session('error') }}</p>
+            @endif
+        </div>
+
+        <a href="/manage" class=service_button>管理画面に戻る</a> 
 
     <!-- フッター -->
     @include('components.footer')

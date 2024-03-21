@@ -16,11 +16,11 @@
 
 
     <!-- サービスの登録セクション -->
-    <section id="service">
-        <h2 class="manage_h2">新規登録</h2>
+    <section>
+        <h2>新規登録</h2>
         <form action="{{ route('form.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <table class="table_manage">
+            <table class="manage_table">
                 <tr>
                     <th width="15%">ラインナップ</th>
                     <th width="30%">サービス内容</th>
@@ -32,11 +32,14 @@
                     <th width="10%"></th>
                 </tr>
                 <tr>
-                    <td><input class="input_gray" type="text" name="line_up"></td>
-                    <td><textarea class="input_gray2" name="service_contents"></textarea></td>
-                    <td><input class="input_gray" type="number" name="price"></td>
-                    <td><img id="preview" src="" alt="プレビュー" style="width: 100px; display: none;"></td>
-                    <td><button type="submit" class="input_gray3">登録</button></td>
+                    <td><input class="grayBack_thin" type="text" name="line_up"></td>
+                    <td><textarea class="grayBack_thick" name="service_contents"></textarea></td>
+                    <td><input class="grayBack_thin" type="number" name="price"></td>
+                    <td>
+                        <span id="exist_img">画像表示</span>
+                        <img id="update_img" src="" alt="プレビュー" style="width: 100px; display: none;">
+                    </td>
+                    <td><button type="submit" class="grayBack_botton">登録</button></td>
                 </tr>
             </table>
         </form>
@@ -44,8 +47,8 @@
 
     <!-- 登録サービスの表示のセクション  -->
     <section>
-        <h2 class="manage_h2">データ管理</h2>
-        <table class="table_manage">
+        <h2>データ管理</h2>
+        <table class="manage_table">
             <tr>
                 <th width="15%">ラインナップ</th>
                 <th width="30%">サービス内容</th>
@@ -61,12 +64,12 @@
                 <td><p>{{ $service->service_name }}</p></td>
                 <td><p>¥{{ number_format($service->price) }}</p></td>
                 <td><img src="{{ asset('storage/' . $service->img_path) }}" alt="" style="width: 100px;"></td>
-                <td class="td_button"><a href="edit_item/{{ $service->id }}" class="input_gray4">編集</a></td>
+                <td class="td_button"><a href="edit_item/{{ $service->id }}" class="grayBack_botton_edit">編集</a></td>
                 <td class="td_button">
                     <form action="{{ route('delete', $service->id) }}" method="POST" onsubmit="return confirm('削除しても良いですか？')">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="input_gray4">削除</button>
+                        <button type="submit" class="grayBack_botton_edit">削除</button>
                     </form>
                 </td>
             </tr>
@@ -77,7 +80,7 @@
     <!-- フッター -->
     @include('components.footer')
 
-    <script src="{{ asset('js/img_display.js') }}"></script>
+    <script src="{{ asset('js/img_swich.js') }}"></script>
 
 </body>
 </html>

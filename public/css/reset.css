@@ -16,6 +16,7 @@ html, body, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, div, span, img, a
 
 html {
   line-height: 1;
+  font-size: 16px;
 }
 
 ol, ul {
