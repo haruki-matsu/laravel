@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2024-03-21 06:40:18
+-- 生成日時: 2024-03-23 03:57:58
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 7.4.29
 
@@ -125,8 +125,8 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `line_up`, `service_name`, `price`, `img_path`, `created_at`, `updated_at`) VALUES
-(46, 'サービス', 'サービスです', '12000', 'uploads/1710836895_65f94c9fdd165.png', '2024-03-19 08:28:15', '2024-03-19 08:28:15'),
-(55, '１１１', '１１１', '11', 'uploads/1710999105_image 2.png', '2024-03-20 15:15:35', '2024-03-21 05:31:45');
+(62, 'サービス内容3', 'サービス内容です。\r\nサービス内容です。', '120000', 'uploads/1711161615_image 2.png', '2024-03-23 02:36:55', '2024-03-23 02:40:15'),
+(64, 'サービス内容', 'サービス内容です', '12000', 'uploads/1711162126_65fe430e2d0f9.png', '2024-03-23 02:48:46', '2024-03-23 02:48:46');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -199,7 +199,7 @@ ALTER TABLE `personal_access_tokens`
 -- テーブルの AUTO_INCREMENT `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
