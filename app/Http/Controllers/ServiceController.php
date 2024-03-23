@@ -129,16 +129,21 @@ class ServiceController extends Controller
         $service->price = $request->price;
 
     // ファイルの処理
-        if ($request->hasFile('up_img')) {
-            $file = $request->file('up_img');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $filePath = 'uploads/' . $filename;
-
-        // Storageファサードを使ってファイルの存在をチェック
-        if (\Storage::exists('public/' . $filePath)) {
-            return redirect()->route('edit.done')->with('error', '同名のファイルが既に存在します。');
+    if ($request->hasFile('up_img')) {
+        $file = $request->file('up_img');
+        $fileContent = file_get_contents($file->getRealPath());
+        $fileHash = md5($fileContent);
+    
+        $files = \Storage::disk('public')->files('uploads/');
+        $exists = collect($files)->contains(function ($existingFile) use ($fileHash) {
+            $existingContent = \Storage::disk('public')->get($existingFile);
+            $existingHash = md5($existingContent);
+            return $fileHash === $existingHash;
+        });
+    
+        if ($exists) {
+            return redirect()->route('edit.done')->with('error', '既に同じ内容の画像が存在します。');
         }
-
         // ファイルを保存
         $path = $file->storeAs('public/uploads', $filename);
         $service->img_path = $filePath;
