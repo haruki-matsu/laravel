@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2024-03-23 03:57:58
+-- 生成日時: 2024-03-27 15:28:44
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 7.4.29
 
@@ -125,8 +125,9 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `line_up`, `service_name`, `price`, `img_path`, `created_at`, `updated_at`) VALUES
-(62, 'サービス内容3', 'サービス内容です。\r\nサービス内容です。', '120000', 'uploads/1711161615_image 2.png', '2024-03-23 02:36:55', '2024-03-23 02:40:15'),
-(64, 'サービス内容', 'サービス内容です', '12000', 'uploads/1711162126_65fe430e2d0f9.png', '2024-03-23 02:48:46', '2024-03-23 02:48:46');
+(71, 'PC構築', 'お客様が購入して、当店に持ち込んでいただいた部品を組み立て致します。', '40000', 'uploads/1711528331_6603d98be7053.png', '2024-03-27 08:32:11', '2024-03-27 08:34:37'),
+(72, 'ソフトウェア開発', 'お客様がご要望している製品を開発させていただきます。', '400000', 'uploads/1711528355_6603d9a3e3ebb.png', '2024-03-27 08:32:35', '2024-03-27 08:35:47'),
+(73, 'PCメンテナンス', '各部品を清掃し、劣化した部品があればリストを作成します。', '20000', 'uploads/1711528603_6603da9b3e13c.png', '2024-03-27 08:36:43', '2024-03-27 08:36:43');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -199,7 +200,7 @@ ALTER TABLE `personal_access_tokens`
 -- テーブルの AUTO_INCREMENT `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
