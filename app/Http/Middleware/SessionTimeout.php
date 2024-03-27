@@ -10,7 +10,7 @@ class SessionTimeout
 {
     public function handle($request, Closure $next)
     {
-        $timeout = 60 * 5; 
+        $timeout = 60 * 60; 
     
         if (!Session::has('lastActivityTime')) {
             Session::put('lastActivityTime', time());

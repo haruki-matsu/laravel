@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2024-03-19 11:05:25
+-- 生成日時: 2024-03-27 15:28:44
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 7.4.29
 
@@ -114,7 +114,7 @@ CREATE TABLE `service` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `line_up` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `service_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` decimal(8,2) DEFAULT NULL,
+  `price` decimal(10,0) DEFAULT NULL,
   `img_path` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -125,8 +125,9 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `line_up`, `service_name`, `price`, `img_path`, `created_at`, `updated_at`) VALUES
-(46, 'サービス', 'サービスです', '12000.00', 'uploads/1710836895_65f94c9fdd165.png', '2024-03-19 08:28:15', '2024-03-19 08:28:15'),
-(47, 'サービス2', 'サービス2です', '130000.00', 'uploads/1710836939_65f94ccb14c9b.png', '2024-03-19 08:28:59', '2024-03-19 08:28:59');
+(71, 'PC構築', 'お客様が購入して、当店に持ち込んでいただいた部品を組み立て致します。', '40000', 'uploads/1711528331_6603d98be7053.png', '2024-03-27 08:32:11', '2024-03-27 08:34:37'),
+(72, 'ソフトウェア開発', 'お客様がご要望している製品を開発させていただきます。', '400000', 'uploads/1711528355_6603d9a3e3ebb.png', '2024-03-27 08:32:35', '2024-03-27 08:35:47'),
+(73, 'PCメンテナンス', '各部品を清掃し、劣化した部品があればリストを作成します。', '20000', 'uploads/1711528603_6603da9b3e13c.png', '2024-03-27 08:36:43', '2024-03-27 08:36:43');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -199,7 +200,7 @@ ALTER TABLE `personal_access_tokens`
 -- テーブルの AUTO_INCREMENT `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,87 +1,142 @@
-/* header */
-header{
-    position: relative;
-    background-color: rgb(58, 150, 280);
+
+
+/* --------------------
+ホームページ(index) 
+---------------------*/
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 180px;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: black;
+    z-index: 1000;
 }
+
+  
+/* header */
+
+header{
+    background-color: #00a3ff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_left{
+    margin-left: 30px; 
+}
+
+.header_right{
+    display: flex;
+    margin-right: 10px; 
+    gap: 20px;
+}
+    
+header form{
+    margin: auto;
+} 
+
 
 header img{
-    width: 180px;
+    width: 6rem;
     height: auto;
-    position: absolute;
-    top: 0;
-    left: 20px;
   }
 
-header div{
-    position: absolute;
-    bottom: 20px;
-    left: 20%;
+header nav{
+    align-self:last baseline
 }
 
-header div a{
-    margin-right: 40px; 
-    font-size: 25px;
+header ul{
+    display: flex;
+    gap:10px;
+    font-weight: bolder;
+    color: #07079b;
+}
+
+.login_botton{
+    align-self: center;
+    margin-right: 10px;
+    padding: 20px 8px;
+    background-color: rgb(30, 30, 223);
+    border-radius: 10px;
     color: white;
-    text-decoration: none;        
+    font-weight:bold;
+    cursor: pointer;    
 }
 
-.roguin{
-    position: absolute;
-    right: 3%;
-    bottom: 20px;
-    background-color: rgb(234, 224, 224);
-    font-size: 30px;
-    padding: 20px;
-    cursor: pointer;
-}
 
-.roguin:hover {
+
+.login:hover {
     background-color: #c6cacf;
 }
 
 
-/*ヘッダー下背景(windowsとmacのロゴ) */
+.hamburger_icon,.hamburger_menu{
+    display: none;
+}
+
+
+/* footer */
+
+footer{
+    display: flex; 
+    justify-content: flex-end; 
+    padding: 40px;
+    background-color: #00a3ff;
+}
+
+address{
+    color: white;
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
+/* ヘッダー下背景画像 */
+
 #img_wiondosMac{
     width: 100%;
     height: auto;
-    display: block;
 }
 
-/* エラーメッセージ */
-.h2_error{
+
+/* 入力フォームエラーメッセージ */
+
+.form_error{
     color: red;
-    font-size: 25px;
+    font-size:1.5rem;
     margin: 20px 0;
 }
 
 ul{
-    margin-bottom: 10px;
+    margin: 0 0 10px 10px;
 }
-
 
 
 
 /* サービス一覧セクション */
-.index_h1{
-    font-size: 58px;
-    letter-spacing: 30px;
-    text-align: center;
-    color: #5e7fef;
+
+h1{
+    font-size: 5vw;
+    color: #1677db;
     -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: rgb(82, 202, 112);
+    -webkit-text-stroke-color: #b0fce5;
+    letter-spacing: 30px;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 70px;
+    margin-top: 30px;
 }
 
-#service{
-    background-color: white;
-    margin-top: 40px;
-}
-
-.h2_1{
-    color: #1717be;
-    font-size: 35px;
+h2{
+    color: #001eb9;
+    font-size: 2rem;
     font-weight: bold;
     margin-top: 40px;
     margin-left: 20px;
@@ -89,40 +144,24 @@ ul{
 
 table {
     margin: 20px auto;
-    top: 200px;
     width: 85%;
     border-collapse: collapse
 }
 
-table img{
-    width: 250px;
-    height: auto;
-}
-
 td {
-    border: 2px solid blue; 
+    border: 2px solid #1677db; 
     vertical-align: middle;
     text-align: center;
     margin: 10px;
-    font-size: 2.2vw;
     padding: 10px;
-  }
-
-  .service_column{
-    text-align: left;
-  }
+}
   
 th {
-    background-color: #5873e0; 
+    background-color: #1677db; 
     border: 2px solid rgb(255, 255, 255); 
     color: white; 
-    font-size: 2vw;
     padding: 7px;
     font-weight:normal
-  }
-
-#th2{
-    width: 40%;
 }
   
 table img{
@@ -132,272 +171,284 @@ table img{
     max-width: 100%; 
 }
 
-  /* 入力フォームのセクション */
-#form{
-    background-color: #4180e5;
-    position: relative;
-    height: 680px;
+.service_content{
+    text-align: left;
 }
 
-.h2_2{
+
+/* 入力フォームセクション */
+
+.form_section{
+    background-color: #1677d7
+}
+
+.form_h2{
     text-align: center;
     color:white;
-    font-size: 45px;
+    font-size: 2.5rem;
     font-weight:normal;
-    padding:20px;
+    padding:60px 0 20px 0;
     margin-bottom: 20px;  
+    margin-left: 0; 
+    margin-right: auto;
+}
+
+.form_section form{
+    display: flex;
+    flex-direction: column;
 }
 
 .form_top{
-    position: absolute; 
-    right:30%;
-    width:60%; 
+    width: 80%;
 }
 
-.input-group {
+.input_group {
     display: flex; 
     margin-bottom: 20px; 
-    justify-content: center;
-    height: 35px;
+    height: 30px;
 }
 
-#message{
-    height: 200px;
-}
-
-label {
-    flex: 1.5; 
-    text-align: center; 
-    min-width: 100px;
-    color: white;
-    font-size: 20px;
-}
-
-input[type="text"],
-input[type="email"],
-select,
-textarea {
+.form_top input,select,textarea{
     flex: 3; 
 }
 
-#bottan{
-    position: absolute;
-    left: 50%; 
-    transform: translateX(-50%); 
-    bottom:15px;
-    font-size: 40px;
+.form_top label {
+    flex: 1.5; 
+    text-align: center; 
+    color: white;
+    display: flex; 
+    justify-content: right; 
+    margin-right: 30px;
+    align-items: center; 
+}
+
+.form_botton{
+    margin: 0 auto; 
+    margin-top: 200px;
+    font-size: 1.1rem;
     padding: 10px 80px; 
     cursor: pointer; 
     background-color: #9fabdc;
     border-radius: 20px; 
     color: white;
     border: none; 
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);    
-    z-index: 1000;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);   
+    margin-bottom: 50px; 
+}
+
+#message{
+    height: 200px;
 }
 
 
 /* 空白（白背景)のセクション */
-.section4{
+.white_section{
     background-color: white;
     height: 50px;   
 }
 
 
-/* footer */
-footer{
-    position: relative;
-    background-color: #34b3f4;
-    height: 150px;
-}
-
-address{
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    font-size: 20px;
-    color: white;
-    font-weight: bold;
-    font-style: normal;
-}
 
 
-/* mail関連ページ */
+/* --------------------
+メール関連ページ（confirm,conplete)
+---------------------*/
+
 .mail_h2{
-    font-size: 40px;
-    color: #1717be;
-    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .mail_p{
-    font-size: 20px;
     margin: 10px;
+    line-height: 1.5;
 }
 
 .mail_button{
-    display: inline-block; 
-    padding: 10px 20px; 
-    font-size: 16px; 
-    border: 2px solid #000; 
-    background-color: #fff; 
-    cursor: pointer; 
-    outline: none; 
-    background-color: #c7cee8;
-    margin: 10px;
+    display: inline-block;
+    font-size: 0.8rem; 
+    cursor: pointer;
+    background-color: rgb(235, 231, 231);
+    padding: 7px 12px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(112, 111, 111);
+    margin: 10px 0 10px 15px;
+    line-height: normal; 
+    border-radius: 5px; 
 }
 
+#mailSubmit_button{
+    background-color: rgb(17, 124, 211);
+    border-color: rgb(17, 124, 211);
+    color: white;
+}
+    
 
 
-/* 管理ページ */
-.table_manage {
+
+
+/* --------------------
+管理ページ(manage)
+---------------------*/
+
+.manage_table {
     width: 95%;
     border-collapse: collapse
 }
 
-.manage_h1{
-    font-size: 40px;
-    color: #3830da;
-    font-weight: bolder;
-    margin: 30px 0 0 10px;
+.td_button{
+    padding: 0px;
 }
 
-.manage_h2{
-    font-size: 35px;
-    color: #3830da;
-    margin-left: 30px;
-}
-
-.input_gray,.input_gray2{
+.grayBack_thin,.grayBack_thick{
     background-color: #dbd8d8; 
     border: 1px solid #ddd; 
     padding: 8px; 
     width: 100%; 
     box-sizing: border-box; 
     height: 60px;
-    font-size: 20px;
 }
 
-.input_gray2{
+.grayBack_thick{
     height: 120px;
     vertical-align: top;
 }
 
-.input_gray3{
+.grayBack_botton,.grayBack_botton_edit{
+    background-color: #b1aeae; 
+    border: 1px solid #ddd; 
+    width: 80%; 
+    box-sizing: border-box; 
+    height: 50px;
+    border-radius: 10px; 
+    cursor: pointer;
+    font-weight: bolder;
+    color: black;
+}
+
+.upload_btn{
     background-color: #dbd8d8; 
     border: 1px solid #ddd; 
-    padding: 8px; 
     width: 95%; 
+    padding: 0 5px;
     box-sizing: border-box; 
     height: 80px;
     border-radius: 10px; 
     cursor: pointer;
+    color: black;
+    font-size: 0.8rem;
 }
 
-.input_gray4{
-    background-color: #dbd8d8; 
-    border: 1px solid #ddd; 
-    padding: 8px; 
+.upload_button_responsive{
+    display: none;
+}
+
+#exist_img{
     width: 100%; 
-    box-sizing: border-box; 
-    height: 80px;
-    border-radius: 10px; 
-    cursor: pointer;
+    font-size: 0.8rem;
     white-space: nowrap; 
-    overflow: hidden; 
     text-overflow: ellipsis; 
 }
 
-span{
-    background-color: #dbd8d8; 
-    padding: 30px; 
-    width: 100%; 
-    font-size: 2vw;
-    margin: 0;
-    white-space: nowrap; /* テキストが要素からはみ出た場合に改行を抑制 */
-    overflow: hidden; /* 要素からはみ出た内容を隠す */
-    text-overflow: ellipsis; 
-}
 
-#image_preview{
-    padding: 5px;
-}
 
-#up_img{
-        display: none
-}
 
-.apload_btn{
-    background-color: #f0f0f0; 
-    border: 1px solid #ddd; 
-    padding: 0 2px; 
-    width: 100%; 
-    box-sizing: border-box; 
-    color: #000;
-    border-radius: 10px; 
+/* --------------------
+サービス関連ページ(edit,edit_complete,delete_comlpete,resistration_complete)
+---------------------*/
+
+.service_button{
+    background-color: #cfcbcb; 
+    padding: 15px; 
     cursor: pointer;
-    font-size: 1.6vw;
-}
-
-.td_button{
-    padding: 1px;
-}
-
-    
-
-/* その他サービステーブル関連ページ*/
-.f_button{
-    background-color: #cfcbcb; /* 灰色の背景色 */
-    padding: 20px; /* 内側の余白を設定 */
-    cursor: pointer;
-    font-size: 25px;
+    font-size: 0.9rem;
     display: inline-block;
     margin: 80px 0 40px 40px;
     border-radius: 10px;
 }
 
-.f_text{
-    font-size: 25px;
+.service_p{
+    font-size: 1.5rem;
     margin-left: 40px;
     margin-top: 80px;
 }
 
-.f_h2{
-    font-size: 40px;
+.service_h2{
     color: #3830da;
     margin-left: 20px;
     font-weight: bold;
     margin-top: 20px;
 }
 
-.display header a{
- display: none
-}
 
 
 
 
+/* --------------------
+ログインページ(login)
+---------------------*/
 
-/* ログイン画面 */
-
-#text_center{
+.login_h2{
+    margin-top: 20px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.login-form {
+.login_container {
     display: flex;
-    justify-content: space-between; /* 入力フィールドとボタンを両端に配置 */
-    align-items: center; /* 縦方向の中央揃え */
+    align-items: center; 
+    width:50%;
+    margin-left: auto; 
+    margin-right: auto; 
+    gap: 30px;
 }
 
-.inputs-container {
-    display: flex;
-    flex-direction: column; /* 入力フィールドを縦に並べる */
+.login_container table {
+    flex: 5;
 }
 
-.login_name, .login_pass, .login_button {
-    margin: 5px 0; /* 余白の調整 */
+.login_container th {
+    background-color: rgb(87, 119, 222);
+    color: white; 
+    padding: 13px 0;
+    vertical-align: middle;
+    width: 30%;
 }
 
-.login_label{
-    color: #000;
+.login_container td {
+    padding: 0; 
+    width: 70%;
+    border: 1.5px solid rgb(87, 119, 222); 
 }
+
+.login_container table {
+    border-collapse: separate;
+    border-spacing: 0 20px; 
+}
+
+.login_container input{
+    width: 100%; 
+    height: 100%;
+    box-sizing: border-box; 
+    border: 0px solid #ccc; 
+    padding: 10px; 
+}
+
+.login_container button{
+    flex: 1;
+    align-self:flex-end;
+    margin-bottom: 40px;
+    background-color: #dbd8d8; 
+    border: 1px solid #ddd; 
+    font-size: 0.9rem;
+    padding: 20px 0;
+    border-radius: 10px; 
+    cursor: pointer;
+    font-weight: bolder;
+}
+  
+
+
+
+  
+  

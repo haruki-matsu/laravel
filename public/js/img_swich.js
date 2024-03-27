@@ -4,15 +4,15 @@ $(document).ready(function() {
         var reader = new FileReader();
         
         reader.onload = function(e) {
-            $('#savedImage').hide(); 
-            $('#preview').attr('src', e.target.result).show(); 
+            $('#exist_img').hide(); 
+            $('#update_img').attr('src', e.target.result).show(); 
         };
         
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            $('#preview').hide(); 
-            $('#savedImage').show(); 
+            $('#exsit_img').hide(); 
+            $('#update_img').show(); 
         }
     });
 });
