@@ -9,7 +9,7 @@ $(document).ready(function(){
         
         $('html, body').animate({
             scrollTop: targetPosition
-        }, 1000); // ms
+        }, 1000); 
     });
 });
 
@@ -17,9 +17,9 @@ $(document).ready(function(){
 //ハンバーガーメニュー
 
 $(document).ready(function(){
-    $(".hamburger-menu").click(function(){
-      $("#navMenu").toggle();
+    $(".hamburger_icon").click(function(){
+        $("#hamburger_menu").toggleClass("visible");
     });
 });
-
   
+

@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>編集画面</title>
-</head>
-<body>
+<!-- ヘッド -->
+@include('components.head', ['title' => '編集画面'])
 
-    <!-- ヘッダー -->
-    @include('components.header')
+<!-- ヘッダー -->
+@include('components.header_common')
+
+<!-- ボディ -->
 
     <!-- サービスの登録セクション -->
     <section id="service">
         <h2 class="manage_h2">編集画面</h2>
             <form action="{{ route('update', ['id' => $service->id]) }}"  method="post" enctype="multipart/form-data">
             @csrf
-                <table class="table_manage">
+                <table class="manage_table">
                     <tr>
                         <th width="15%">ラインナップ</th>
                         <th width="30%">サービス内容</th>
@@ -31,11 +23,11 @@
                         <th width="10%"></th>
                     </tr>
                     <tr>
-                        <td><input class="grayBack_thin" type="text" name="line_up"value="{{ $service->line_up }}"></td>
-                        <td><textarea class="grayBack_thick" name="service_contents">{{ $service->service_name }}</textarea></td>
-                        <td>
-                            <input class="grayBack_thin" type="number" name="price" value="{{ $service->price }}"></td>
-                        <td>
+                        <td data-label=ラインナップ><input class="grayBack_thin" type="text" name="line_up"value="{{ $service->line_up }}"></td>
+                        <td data-label=サービス内容><textarea class="grayBack_thick" name="service_contents">{{ $service->service_name }}</textarea></td>
+                        <td data-label=金額(税込み)>
+                            <input class="grayBack_thin" type="number" name="price" value="{{ $service->price }}" min="0"></td>
+                        <td data-label=画像>
                             <img src="{{ asset('storage/' . $service->img_path) }}" alt="サービス画像" id="exist_img" style="max-width: 100px; max-height: 100px;">
                             <img id="update_img" src="" alt="プレビュー" style="width: 100px; display: none;">
                         </td>
@@ -45,10 +37,10 @@
             </form>
     </section>
     
-    <!-- フッター -->
-    @include('components.footer')
-
-    <script src="{{ asset('js/img_swich.js') }}"></script>
-
-</body>
-</html>
+<!-- フッター -->
+@include('components.footer')
+    
+    <!-- JSファイル -->
+    @section('before-closing-body')
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{ asset('js/img_swich.js') }}"></script>

@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <title>削除完了画面</title>
-</head>
-<body>
-    <!-- ヘッダー -->
-    @include('components.header')
+<!-- ヘッド -->
+@include('components.head', ['title' => '削除完了画面'])
 
-    <h2 class=h2>削除画面</h2>
-        <div class=service_text>
+<!-- ヘッダー -->
+@include('components.header_common')
 
+<!-- ボディ -->
+    <h2 class=serviceh2>削除画面</h2>
+        <div class=service_p>
 
             <!-- バリデーションのメッセージ -->
             @if(session('success'))
@@ -26,10 +18,9 @@
             @endif
         </div>
 
-        <a href="/manage" class=service_button>管理画面に戻る</a> 
+        <div class=service_button_container>
+            <a href="/manage" class=service_button>管理画面に戻る</a> 
+        </div>
+<!-- フッター -->
+@include('components.footer')
 
-    <!-- フッター -->
-    @include('components.footer')
-
-</body>
-</html>

@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{ asset('js/index.js') }}"></script>
-    <title>ホーム画面</title>
-</head>
-<body>
-    <!-- ヘッダー -->
-    @include('components.header_index')
+<!-- ヘッド -->
+@include('components.head', ['title' => 'HOME画面'])
+
+<!-- ヘッダー -->
+@include('components.header_index')
 
     <!-- エラーメッセージ(入力フォームでエラーになった場合に表示) -->
     @if ($errors->any())
@@ -31,27 +21,20 @@
     <section class=service_section id=service>
         <h1>テクノロジーを身近に</h1>
             <h2>サービス一覧</h2>
-                <table>
-                    <colgroup>
-                        <col style="width: 20%;">
-                        <col style="width: 45%;">
-                        <col style="width: 20%;">
-                        <col style="width: 20%;">
-                    </colgroup>
-                        <tr>
-                            <th>ラインナップ</th>
-                            <th>サービス内容</th>
-                            <th>金額（税込）</th>
-                            <th></th>
-                        </tr>
+                <table class=service_table>
+                    <tr class="thead">
+                        <th>ラインナップ</th>
+                        <th>サービス内容</th>
+                        <th>金額(税込)</th>
+                        <th></th>
+                    </tr>
                     @foreach ($services as $service) 
-                        <tr>
-                            <td><p>{{ $service->line_up }}</p></td>
-                            <td><p>{{ $service->service_name }}</p></td>
-                            <td><p>¥{{ number_format($service->price) }}</p></td>
-                            <td><img src="{{ asset('storage/' . $service->img_path) }}" alt="" style="width: 100px;"></td>
-
-                        </tr>
+                    <tr>
+                        <td class=td_top><p>{{ $service->line_up }}</p></td>
+                        <td data-label="サービス内容"><p class=service_content>{{ $service->service_name }}</p></td>
+                        <td data-label="金額(税込み)"><p>¥{{ number_format($service->price) }}</p></td>
+                        <td data-label="画像"><img src="{{ asset('storage/' . $service->img_path) }}" alt="" style="width: 100px;"></td>
+                    </tr>
                     @endforeach
 
                 </table>
@@ -96,8 +79,11 @@
 
     <section class="white_section"></section>
 
-    <!-- フッター -->
-    @include('components.footer')
+<!-- フッター -->
+@include('components.footer')
+    
+    <!-- JSファイル -->
+    @section('before-closing-body')
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{ asset('js/index.js') }}"></script>
 
-</body>
-</html>

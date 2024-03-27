@@ -6,3 +6,6 @@
     </address>
 
 </footer>
+@yield('js_lincs')
+</body>
+</html>

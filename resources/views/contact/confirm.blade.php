@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <title>入力フォーム確認画面</title>
-</head>
-<body>
+<!-- ヘッド -->
+@include('components.head', ['title' => '確認画面'])
+
     <!-- ヘッダー -->
-    @include('components.header')
+    @include('components.header_common')
 
     <!--送信内容の確認のセクション -->
     <h2 class="mail_h2">送信内容の確認</h2>
@@ -29,14 +21,15 @@
             <input type="hidden" name="category" value="{{ session('data.category') }}">
             <input type="hidden" name="message" value="{{ session('data.message') }}">
             
-            <button type="button" class=mail_button onclick="history.back()">修正する</button>
-            <input type="submit"  class=mail_button value="送信する">
+            <div class=mail_buttons>
+                <button type="button" class=mail_button id=mailEdit_button onclick="history.back()">修正する</button>
+                <input type="submit"  class=mail_button id=mailSubmit_button value="送信する">
+            </div>
         </form>
 
-    <!-- フッター -->
-    @include('components.footer')
+<!-- フッター -->
+@include('components.footer')
 
-</body>
-</html>
+
 
 

@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-    <title>ログイン画面</title>
-</head>
-<body>
+<!-- ヘッド -->
+@include('components.head', ['title' => 'ログイン画面'])
 
-  <!-- ヘッダー -->
-  @include('components.header')
+<!-- ヘッダー -->
+@include('components.header_common')
 
   <!-- 入力フォームのエラーを表示 -->
   @if ($errors->any())
@@ -37,14 +28,9 @@
               <th>PassWord</th>
               <td><input type="password" name="password"></td>
             </tr>
-          </table>
+        </table>
         <button type="submit">ログイン</button>
       </div>
 
-
-
-  <!-- フッター -->
-  @include('components.footer')
-
-</body>
-</html>
+<!-- フッター -->
+@include('components.footer')
